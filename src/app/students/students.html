@@ -1,0 +1,22 @@
+<input type="number" placeholder="Id" #idInp>
+
+<input type="text" placeholder="Name" #nameInp>
+
+<input type="number" placeholder="Age" #ageInp>
+
+<button
+(click)="addStudent(+idInp.value,nameInp.value,+ageInp.value)">
+Add Student
+</button>
+
+<hr>
+
+<h2>Students List</h2>
+
+@for (student of students; track student.id) {
+   <p>
+        {{student.id}} -
+        {{student.name}} -
+        {{student.age}}
+    </p>
+}
