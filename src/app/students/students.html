@@ -1,22 +1,61 @@
-<input type="number" placeholder="Id" #idInp>
+<div class="container">
 
-<input type="text" placeholder="Name" #nameInp>
+  <h1>Students Management</h1>
 
-<input type="number" placeholder="Age" #ageInp>
+  <app-student-add
+  (studentAdded)="addStudentToList($event)">
+</app-student-add>
 
-<button
-(click)="addStudent(+idInp.value,nameInp.value,+ageInp.value)">
-Add Student
-</button>
+  <hr>
 
-<hr>
+  <h2>Students List</h2>
 
-<h2>Students List</h2>
+  @for (student of students(); track student.id) {
 
-@for (student of students; track student.id) {
-   <p>
-        {{student.id}} -
-        {{student.name}} -
-        {{student.age}}
+    <div
+      class="student-card"
+
+      [ngClass]="{
+        'selected-student':
+          selectedStudent()?.id === student.id
+      }"
+
+      (click)="selectStudent(student)">
+
+      <strong>{{student.name}}</strong>
+
+
+    </div>
+  }
+
+  <hr>
+
+  @if(selectedStudent()){
+
+    <app-student-details
+      [student]="selectedStudent()!">
+    </app-student-details>
+
+    <app-student-edit
+      [student]="selectedStudent()!"
+      (studentUpdated)="updateStudent($event)">
+  </app-student-edit>
+
+    <button
+      class="close-btn"
+      (click)="disappear()">
+
+      Hide Details
+
+    </button>
+
+  }
+  @else {
+
+    <p class="empty-message">
+      Select a student to see details
     </p>
-}
+
+  }
+
+</div>

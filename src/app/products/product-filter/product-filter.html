@@ -1,0 +1,32 @@
+<div class="filter-container">
+
+  <h3>Filter By Category</h3>
+
+  <select
+    class="form-select"
+    (change)="onCategoryChange($event)">
+
+    <option value="0">
+      All Categories
+    </option>
+
+    @for(category of categories; track category.id){
+
+      <option [value]="category.id">
+
+        {{category.name}}
+
+      </option>
+
+    }
+
+  </select>
+
+  <div class="total-box">
+
+      Cart Total:
+      {{cartTotal}} $
+
+  </div>
+
+</div>

@@ -1,0 +1,26 @@
+<p>student-edit works!</p>
+<h3>Edit Student</h3>
+
+<input
+  #idInp
+  type="number"
+  [value]="student.id">
+
+<input
+  #nameInp
+  type="text"
+  [value]="student.name">
+
+<input
+  #ageInp
+  type="number"
+  [value]="student.age">
+
+<button
+(click)="saveStudent(
+  +idInp.value,
+  nameInp.value,
+  +ageInp.value
+)">
+ Save Changes
+</button>

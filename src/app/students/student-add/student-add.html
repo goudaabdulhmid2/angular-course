@@ -1,0 +1,14 @@
+<input type="number" placeholder="Id" #idInp>
+
+<input type="text" placeholder="Name" #nameInp>
+
+<input type="number" placeholder="Age" #ageInp>
+
+<button
+(click)="addStudent(
+  +idInp.value,
+  nameInp.value,
+  +ageInp.value
+)">
+Add Student
+</button>
