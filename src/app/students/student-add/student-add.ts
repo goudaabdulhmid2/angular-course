@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { IStudent } from '../../models/istudent';
+import { StudentService } from '../../services/student-service';
 
 @Component({
   selector: 'app-student-add',
@@ -8,14 +9,15 @@ import { IStudent } from '../../models/istudent';
   styleUrl: './student-add.css',
 })
 export class StudentAdd {
-  @Output()
-  studentAdded = new EventEmitter<IStudent>();
+  studentService = inject(StudentService)
 
-  addStudent(id: number, name: string, age: number): void {
-    this.studentAdded.emit({
+  onSubmit(id:number, name:string, age:number){
+    const newStudent: IStudent = {
       id,
       name,
-      age,
-     });
+      age
+    }
+
+    this.studentService.addStudent(newStudent);
   }
 }

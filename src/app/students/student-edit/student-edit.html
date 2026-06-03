@@ -4,17 +4,17 @@
 <input
   #idInp
   type="number"
-  [value]="student.id">
+  [value]="student()?.id">
 
 <input
   #nameInp
   type="text"
-  [value]="student.name">
+  [value]="student()?.name">
 
 <input
   #ageInp
   type="number"
-  [value]="student.age">
+  [value]="student()?.age">
 
 <button
 (click)="saveStudent(

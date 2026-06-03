@@ -2,8 +2,7 @@
 
   <h1>Students Management</h1>
 
-  <app-student-add
-  (studentAdded)="addStudentToList($event)">
+  <app-student-add>
 </app-student-add>
 
   <hr>
@@ -33,12 +32,11 @@
   @if(selectedStudent()){
 
     <app-student-details
-      [student]="selectedStudent()!">
+      [studentId]="selectedStudent()!.id">
     </app-student-details>
 
     <app-student-edit
-      [student]="selectedStudent()!"
-      (studentUpdated)="updateStudent($event)">
+      [studentId]="selectedStudent()!.id">
   </app-student-edit>
 
     <button
