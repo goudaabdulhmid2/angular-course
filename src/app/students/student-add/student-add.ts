@@ -11,13 +11,8 @@ import { StudentService } from '../../services/student-service';
 export class StudentAdd {
   studentService = inject(StudentService)
 
-  onSubmit(id:number, name:string, age:number){
-    const newStudent: IStudent = {
-      id,
-      name,
-      age
-    }
+  onSubmit(name:string, age:number){
 
-    this.studentService.addStudent(newStudent);
+    this.studentService.addStudent(name, age);
   }
 }

@@ -20,16 +20,20 @@ export class StudentService {
     return this.students().find((stud)=>stud.id === id);
   }
 
-  addStudent(student:IStudent){
-
+  addStudent(name:string, age:number){
+    const student: IStudent = {
+      id:this.students().length + 1,
+      name,
+      age
+    }
     this.students.update((currentStudent)=> [...currentStudent, student])
   }
 
   updateStudent(id:number, newData:IStudent){
-  
-      this.students.update((currentStudents)=> 
+
+      this.students.update((currentStudents)=>
         currentStudents.map((student)=> student.id === id ? newData : student)
       )
-    
+
   }
 }

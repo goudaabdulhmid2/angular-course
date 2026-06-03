@@ -1,10 +1,6 @@
 <p>student-edit works!</p>
 <h3>Edit Student</h3>
 
-<input
-  #idInp
-  type="number"
-  [value]="student()?.id">
 
 <input
   #nameInp
@@ -18,7 +14,6 @@
 
 <button
 (click)="saveStudent(
-  +idInp.value,
   nameInp.value,
   +ageInp.value
 )">

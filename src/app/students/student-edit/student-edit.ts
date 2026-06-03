@@ -15,12 +15,12 @@ export class StudentEdit {
     return this.studentService.getStudent(this.studentId())
   })
 
-  saveStudent(id:number, name:string, age:number ){
+  saveStudent(name:string, age:number ){
     const newData = {
-      id,
+      id: this.studentId(),
       name,
       age
     }
-    this.studentService.updateStudent(id,newData)
+    this.studentService.updateStudent(this.studentId(), newData)
   }
 }
