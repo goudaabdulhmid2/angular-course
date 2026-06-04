@@ -1,3 +1,27 @@
-<app-students></app-students>
-<hr>
-<app-products></app-products>
+<div class="app-shell">
+	<header class="topbar">
+		<a class="brand" routerLink="/students">
+			<span class="brand-mark">L1</span>
+			<span>{{ title() }}</span>
+		</a>
+
+		<nav class="nav-links" aria-label="Primary navigation">
+			<a
+				routerLink="/students"
+				routerLinkActive="active"
+				[routerLinkActiveOptions]="{ exact: true }">
+				Students
+			</a>
+      	<a
+				routerLink="/students/add"
+				routerLinkActive="active"
+				[routerLinkActiveOptions]="{ exact: true }">
+				Add Students
+			</a>
+		</nav>
+	</header>
+
+	<main class="page-content">
+		<router-outlet></router-outlet>
+	</main>
+</div>

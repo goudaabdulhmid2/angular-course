@@ -1,12 +1,6 @@
 <div class="details-card">
 
     <h2>Student Details</h2>
-
-    <p>
-        <strong>ID:</strong>
-        {{student()?.id}}
-    </p>
-
     <p>
         <strong>Name:</strong>
         {{student()?.name}}
@@ -16,5 +10,16 @@
         <strong>Age:</strong>
         {{student()?.age}}
     </p>
+           <p>
+              <strong>Department:</strong>
+                {{student()?.department?.name}}
+            </p>
+
+    <div class="actions">
+      <a [routerLink]="['/students/edit/',student()?._id]">
+        <button class="btn btn-primary" >Update</button>
+      </a>
+        <button class="btn btn-danger" (click)="deleteStudent()">Delete</button>
+    </div>
 
 </div>

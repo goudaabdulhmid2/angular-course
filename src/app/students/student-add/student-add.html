@@ -1,11 +1,28 @@
-<input type="text" placeholder="Name" #nameInp>
+<div class="add-card">
+  <h3>Add Student</h3>
 
-<input type="number" placeholder="Age" #ageInp>
+  <label class="field">
+    <span class="label">Name</span>
+    <input type="text" placeholder="Name" #nameInp />
+  </label>
 
-<button
-(click)="onSubmit(
-  nameInp.value,
-  +ageInp.value
-)">
-Add Student
-</button>
+  <label class="field">
+    <span class="label">Age</span>
+    <input type="number" placeholder="Age" #ageInp />
+  </label>
+
+  <label class="field">
+    <span class="label">Department</span>
+    <select #deptSel>
+      <option value="">-- None --</option>
+      @for (dept of departments() ?? []; track dept._id) {
+        <option value="{{dept._id}}">{{dept.name}}</option>
+      }
+    </select>
+  </label>
+
+  <div class="actions">
+    <button class="btn btn-primary" (click)="onSubmit(nameInp.value, +ageInp.value, deptSel.value)">Add Student</button>
+  </div>
+
+</div>

@@ -1,13 +1,74 @@
 .details-card{
+    margin: 20px auto;
+    max-width: 720px;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid rgba(16,35,61,0.06);
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    box-shadow: 0 10px 30px rgba(16,35,61,0.06);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
 
-    margin-top: 20px;
+.details-card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px rgba(16,35,61,0.08);
+}
 
-    padding: 20px;
+.details-card h2{
+    margin: 0 0 12px 0;
+    font-size: 1.25rem;
+    color: #10233d;
+}
 
-    border-radius: 10px;
+.details-card p{
+    margin: 10px 0;
+    color: #334155;
+    line-height: 1.45;
+}
 
-    border: 1px solid #ddd;
+.details-card p strong{
+    display: inline-block;
+    width: 96px;
+    color: #0f1724;
+}
 
-    background-color: #fafafa;
+.actions{
+    margin-top: 18px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
 
+.btn{
+    border: none;
+    padding: 8px 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn:active{ transform: translateY(1px); }
+
+.btn-primary{
+    background: linear-gradient(90deg,#2563eb,#06b6d4);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(37,99,235,0.12);
+}
+
+.btn-primary:hover{ box-shadow: 0 14px 30px rgba(37,99,235,0.16); }
+
+.btn-danger{
+    background: linear-gradient(90deg,#ef4444,#f97316);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(239,68,68,0.12);
+}
+
+.btn-danger:hover{ box-shadow: 0 14px 30px rgba(239,68,68,0.16); }
+
+@media (max-width: 520px){
+    .details-card{ padding: 16px; margin: 12px; }
+    .details-card p strong{ width: 84px; }
+    .actions{ justify-content: stretch; flex-direction: column-reverse; }
+    .btn{ width: 100%; }
 }

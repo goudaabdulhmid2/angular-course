@@ -1,21 +1,40 @@
-<p>student-edit works!</p>
-<h3>Edit Student</h3>
+<div class="edit-card">
+  <h3>Edit Student</h3>
 
+  <label class="field">
+    <span class="label">Name</span>
+    <input
+      type="text"
+      [value]="student()?.name"
+      (input)="updateName($any($event.target).value)"
+      placeholder="Student name" />
+  </label>
 
-<input
-  #nameInp
-  type="text"
-  [value]="student()?.name">
+  <label class="field">
+    <span class="label">Age</span>
+    <input
+      type="number"
+      [value]="student()?.age"
+      (input)="updateAge($any($event.target).value)"
+      min="0" />
+  </label>
 
-<input
-  #ageInp
-  type="number"
-  [value]="student()?.age">
+  <label class="field">
+    <span class="label">Department</span>
+    <select
+      (change)="updateDepartment($any($event.target).value)"
+      [value]="student()?.department?._id || ''">
+      <option value="">-- None --</option>
+      @for (dept of departments() ?? []; track dept._id) {
+        <option value="{{dept._id}}">{{dept.name}}</option>
+      }
+    </select>
+  </label>
 
-<button
-(click)="saveStudent(
-  nameInp.value,
-  +ageInp.value
-)">
- Save Changes
-</button>
+  <div class="actions">
+    <button class="btn btn-primary" (click)="saveUpdate('save')">Update</button>
+    <button class="btn btn-danger" (click)="saveUpdate('delete')">Delete</button>
+    <a class="btn btn-link" [routerLink]="['/students', studentId]">Cancel</a>
+  </div>
+
+</div>

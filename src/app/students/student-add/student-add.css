@@ -1,9 +1,18 @@
-input{
-    padding: 8px;
-    margin-right: 10px;
+.add-card{
+    max-width:720px;
+    margin:18px auto;
+    padding:20px;
+    background:linear-gradient(180deg,#ffffff,#fbfdff);
+    border-radius:12px;border:1px solid rgba(16,35,61,0.04);
+    box-shadow:0 12px 30px rgba(16,35,61,0.06);
 }
 
-button{
-    padding: 8px 15px;
-    cursor: pointer;
-}
+.add-card h3{margin:0 0 12px 0;color:#0f1724}
+.field{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.field .label{font-weight:600;color:#334155}
+.field input, .field select{padding:10px 12px;border-radius:10px;border:1px solid rgba(16,35,61,0.08);outline:none}
+.actions{display:flex;justify-content:flex-end}
+.btn{padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+.btn-primary{background:linear-gradient(90deg,#2563eb,#06b6d4);color:#fff}
+
+@media(max-width:640px){.add-card{margin:12px;padding:14px}.actions{flex-direction:column-reverse}.btn{width:100%}}

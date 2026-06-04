@@ -1,8 +1,8 @@
 import { IDepartment } from "./department/i-department";
 
-export interface IStudent {
-  _id?: string;
+export interface IStudentDetails {
+  _id: string;
   name: string;
   age: number;
-  department?:IDepartment
+  department: IDepartment;
 }

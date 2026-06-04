@@ -1,59 +1,23 @@
 <div class="container">
-
-  <h1>Students Management</h1>
-
-  <app-student-add>
-</app-student-add>
-
   <hr>
 
   <h2>Students List</h2>
 
-  @for (student of students(); track student.id) {
+  @for (student of students(); track student._id) {
 
-    <div
+    <a
+      [routerLink]="['/students', student._id]"
       class="student-card"
-
       [ngClass]="{
         'selected-student':
-          selectedStudent()?.id === student.id
-      }"
-
-      (click)="selectStudent(student)">
+          selectedStudent()?._id === student._id
+      }">
 
       <strong>{{student.name}}</strong>
 
-
-    </div>
+    </a>
   }
 
   <hr>
-
-  @if(selectedStudent()){
-
-    <app-student-details
-      [studentId]="selectedStudent()!.id">
-    </app-student-details>
-
-    <app-student-edit
-      [studentId]="selectedStudent()!.id">
-  </app-student-edit>
-
-    <button
-      class="close-btn"
-      (click)="disappear()">
-
-      Hide Details
-
-    </button>
-
-  }
-  @else {
-
-    <p class="empty-message">
-      Select a student to see details
-    </p>
-
-  }
 
 </div>

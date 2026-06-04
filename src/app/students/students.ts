@@ -1,21 +1,28 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 import { IStudent } from '../models/istudent';
-import { StudentDetails } from './student-details/student-details';
-import { StudentAdd } from './student-add/student-add';
-import { StudentEdit } from './student-edit/student-edit';
 import { StudentService } from '../services/student-service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-students',
-  imports: [StudentDetails,StudentAdd,StudentEdit, NgClass],
+  imports: [NgClass, RouterLink],
   templateUrl: './students.html',
   styleUrl: './students.css',
 })
-export class Students {
+export class Students implements OnInit{
   studentService = inject(StudentService);
-  students = this.studentService.getStudents();
+  students = signal<IStudent[]>([]);
+
+  ngOnInit(): void {
+    this.studentService.getStudents().pipe(
+      map(res => res.data.docs)
+    ).subscribe(students => {
+      this.students.set(students);
+    })
+  }
 
 selectedStudent = signal<IStudent | undefined>(
   undefined
@@ -25,9 +32,6 @@ selectedStudent = signal<IStudent | undefined>(
   this.selectedStudent.set(student);
  }
 
- disappear(){
-  this.selectedStudent.set(undefined);
- }
 
 
 }
